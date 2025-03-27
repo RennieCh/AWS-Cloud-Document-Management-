@@ -279,6 +279,10 @@ export default function Dashboard() {
               <div className="mt-3">
                 <div className="mb-2">
                   Selected: <strong>{selectedFile.name}</strong>
+                  <div className="text-muted small mt-1">
+                    Tip: Max file size is <strong>5 MB</strong> to avoid upload
+                    errors.
+                  </div>
                 </div>
                 {uploadStatus === "idle" && (
                   <div className="d-flex justify-content-center gap-2">
