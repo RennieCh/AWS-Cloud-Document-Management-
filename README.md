@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+# Simplified Cloud-Based Document Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+A lightweight web-based system to upload, store, and retrieve documents using ReactJS and AWS (Lambda, S3, DynamoDB, API Gateway, Cognito).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌐 Deployed URLs
+- **Frontend (Amplify)**: [https://main--cloud-doc-system.amplifyapp.com](https://main.d36lpth6m3auwp.amplifyapp.com/)
+  
+---
 
-### `npm start`
+## 🚀 Features
+- User login (via AWS Cognito or test account)
+- Upload and list user-specific documents
+- Filter and sort by type/date/name
+- Delete and download documents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🧱 Tech Stack
+- **Frontend**: ReactJS + TypeScript, Redux, AWS Amplify
+- **Backend**: AWS Lambda (Python), S3, DynamoDB, API Gateway
+- **Auth**: AWS Cognito
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ AWS Setup Summary
+- S3 Bucket: `doc-mgmt-system-bucket`
+- DynamoDB Table: `DocumentsMetadata`
+- Cognito User Pool: handles username/password login
+- IAM Role: Grants Lambda access to S3 and DynamoDB
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔧 Lambda Functions (Python)
+1. `DocumentUploadFunction` – handles `POST /upload`, `GET /documents`
+2. `DeleteDocumentFunction` – handles `DELETE /delete-document`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🖥️ App Structure
+```
+src/
+├── index.tsx
+├── App.tsx
+└── WebApp/
+    ├── index.tsx
+    ├── TOC.tsx
+    ├── Dashboard/ (Document UI)
+    └── Account/ (Login, Signup, Profile)
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## ⚙️ Behavior
+- Sign-in screen shown by default
+- After login: view Profile, update user info, see own documents
+- Upload via drag-and-drop or file picker
+- File controls: filter, sort, delete, download
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🗃️ Database Model
+**Users** (via Cognito):
+- `user_id`, `username`, `password`, `first_name`, `last_name`, `dob`, `email`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Documents**:
+- `document_id`, `user_id`, `s3_key`, `file_name`, `upload_time`
 
-## Learn More
+**Relationship**: One user → many documents
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🤝 Author
+Runying Chen 😄
+
+---
