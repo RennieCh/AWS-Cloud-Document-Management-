@@ -11,7 +11,7 @@ A lightweight web-based system to upload, store, and retrieve documents using Re
 ---
 
 ## 🚀 Features
-- User login (via AWS Cognito or test account)
+- User login (via AWS Cognito)
 - Upload and list user-specific documents
 - Filter and sort by type/date/name
 - Delete and download documents
