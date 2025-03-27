@@ -39,7 +39,27 @@ export default function WebApp() {
           <h4 className="m-4">Cloud Document Dashboard</h4>
           <img src="images/RC_Logo.png" width="65px" alt="NEU Logo" />
         </div>
-        {shouldShowTOC && <TOC userId={userId} />}
+        {shouldShowTOC && (
+          <div className="d-flex justify-content-between align-items-center px-4 py-2">
+            <TOC userId={userId} />
+            <button
+              className="btn btn-outline-success"
+              style={{
+                borderWidth: "2px",
+                padding: "4px 12px",
+                fontSize: "0.95rem",
+                whiteSpace: "nowrap",
+              }}
+              onClick={async () => {
+                await Auth.signOut();
+                localStorage.removeItem("userId");
+                window.location.href = "#/";
+              }}
+            >
+              Sign out
+            </button>
+          </div>
+        )}
       </div>
 
       <Routes>

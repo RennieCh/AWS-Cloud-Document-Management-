@@ -23,7 +23,8 @@ export default function Profile() {
 
   const handleSignOut = async () => {
     await Auth.signOut();
-    navigate("/Dashboard/Account/Signin");
+    localStorage.removeItem("userId");
+    navigate("/");
   };
 
   const handleUpdate = async () => {

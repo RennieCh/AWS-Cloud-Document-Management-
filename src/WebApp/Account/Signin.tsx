@@ -23,17 +23,32 @@ export default function Signin() {
     <div id="wd-signin-screen" className="mb-5 container py-4 px-4">
       <h3>Sign in</h3>
       <div className="mb-3 row">
-        <label htmlFor="signin-username" className="col-sm-2 col-form-label">Username</label>
-        <div className="col-sm-10">
-          <input id="signin-username" className="form-control" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </div>
-      </div>
-      <div className="mb-3 row">
-        <label htmlFor="signin-password" className="col-sm-2 col-form-label">Password</label>
-        <div className="col-sm-10">
-          <input id="signin-password" className="form-control" placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-      </div>
+  <label htmlFor="signin-username" className="col-sm-2 col-form-label">Username</label>
+  <div className="col-sm-10" style={{ maxWidth: "400px" }}>
+    <input
+      id="signin-username"
+      className="form-control"
+      placeholder="username"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+    />
+  </div>
+</div>
+
+<div className="mb-3 row">
+  <label htmlFor="signin-password" className="col-sm-2 col-form-label">Password</label>
+  <div className="col-sm-10" style={{ maxWidth: "400px" }}>
+    <input
+      id="signin-password"
+      className="form-control"
+      placeholder="password"
+      type="password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+    />
+  </div>
+</div>
+
       {error && <div className="alert alert-danger">{error}</div>}
       <div className="mb-2">
         <button onClick={handleSignIn} className="btn btn-success me-3">Sign in</button>
